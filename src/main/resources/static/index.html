@@ -1,0 +1,16 @@
+ // Function to show browser notification
+    function showNotification(message) {
+        if (Notification.permission === 'granted') {
+            var notification = new Notification('New Message', {
+                body: message,
+            });
+        } else if (Notification.permission !== 'denied') {
+            Notification.requestPermission().then(function(permission) {
+                if (permission === 'granted') {
+                    var notification = new Notification('New Message', {
+                        body: message,
+                    });
+                }
+            });
+        }
+    }
